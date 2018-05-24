@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css?v=1.0' />
+    <%- include('template/head') %>
+  </head>
+  <body class="login">
+
+    <h1 class="title center-align"><%= title %></h1>
+    <form method="POST" class="col s6">
+      <div class="row">
+        <div class="col s12 m6">
+           
+          <div class="card white center-align center-desktop ">
+            <div class="card-content black-text">
+              
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix login-icons">account_circle</i>
+                  <input id="login" name="login" type="text" class="validate" required>
+                  <label for="login">Login/Email</label>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix login-icons">lock</i>
+                  <input id="senha" name="senha"type="password" class="validate" required>
+                  <label for="senha">Senha</label>
+                </div>
+              </div>
+            <div class="card-action center-align">
+              <button class="waves-effect waves-light btn">Entrar</button>
+            </div>
+            <div class="card-action center-align">
+              <a class="waves-effect waves-light btn" href="/cadastrar">Cadastrar</a>
+            </div>
+            <div class="card-action center-align">
+              <%= error %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+    
+      
+  <%- include('template/scripts') %>
+  </body>
+</html>

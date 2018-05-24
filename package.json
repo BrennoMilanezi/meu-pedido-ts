@@ -1,0 +1,25 @@
+{
+  "name": "meu-pedido",
+  "version": "1.0.0",
+  "description": "Meu pedido com TypeORM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matheus Barbosa e Brenno Milanezi",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^10.1.2",
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "mysql": "^2.15.0",
+    "reflect-metadata": "^0.1.12",
+    "typeorm": "^0.2.6"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.17.0",
+    "@types/express": "^4.11.1",
+    "@types/node": "^10.1.2"
+  }
+}
