@@ -10,32 +10,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
-let cartao = class cartao {
+const compra_1 = require("./compra");
+let Cartao = class Cartao {
 };
 __decorate([
     typeorm_1.PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
-], cartao.prototype, "cartaoId", void 0);
+], Cartao.prototype, "cartaoId", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], cartao.prototype, "titular", void 0);
+], Cartao.prototype, "titular", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", Number)
-], cartao.prototype, "numero", void 0);
+], Cartao.prototype, "numero", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", Number)
-], cartao.prototype, "cod_seguranca", void 0);
+], Cartao.prototype, "cod_seguranca", void 0);
 __decorate([
     typeorm_1.Column({
         type: "date"
     }),
     __metadata("design:type", String)
-], cartao.prototype, "vencimento", void 0);
-cartao = __decorate([
+], Cartao.prototype, "vencimento", void 0);
+__decorate([
+    typeorm_1.OneToMany(type => compra_1.Compra, compra => compra.cliente),
+    __metadata("design:type", Array)
+], Cartao.prototype, "compras", void 0);
+Cartao = __decorate([
     typeorm_1.Entity("cartao")
-], cartao);
-exports.cartao = cartao;
+], Cartao);
+exports.Cartao = Cartao;
 //# sourceMappingURL=cartao.js.map

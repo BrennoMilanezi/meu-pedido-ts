@@ -1,4 +1,5 @@
-import {Entity, Column,  PrimaryGeneratedColumn} from "typeorm";
+import {Entity, Column,  PrimaryGeneratedColumn, ManyToMany, JoinTable} from "typeorm";
+import {Produto} from './produto'
 
 @Entity("combo")
 export class combo {
@@ -12,4 +13,7 @@ export class combo {
     @Column()
     preco: number;
     
+    @ManyToMany(type => Produto)
+    @JoinTable()
+    item: Produto[]
 }

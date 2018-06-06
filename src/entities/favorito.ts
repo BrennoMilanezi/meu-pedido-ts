@@ -6,4 +6,10 @@ export class Favorito {
     @PrimaryGeneratedColumn()
     favoritoId: number;
     
+    @Column()
+    produtoId: number;
+    
+    @Column()
+    clienteId: number;
+    
 }

@@ -10,6 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
+const cliente_1 = require("./cliente");
+const cartao_1 = require("./cartao");
 let Compra = class Compra {
 };
 __decorate([
@@ -32,6 +34,14 @@ __decorate([
     typeorm_1.Column(),
     __metadata("design:type", Number)
 ], Compra.prototype, "nota_avaliacao", void 0);
+__decorate([
+    typeorm_1.ManyToOne(type => cliente_1.Cliente, cliente => cliente.compras),
+    __metadata("design:type", cliente_1.Cliente)
+], Compra.prototype, "cliente", void 0);
+__decorate([
+    typeorm_1.ManyToOne(type => cartao_1.Cartao, cartao => cartao.compras),
+    __metadata("design:type", cartao_1.Cartao)
+], Compra.prototype, "cartao", void 0);
 Compra = __decorate([
     typeorm_1.Entity("compra")
 ], Compra);

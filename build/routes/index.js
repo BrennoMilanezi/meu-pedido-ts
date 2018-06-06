@@ -1,13 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
-const prodController = require("../controllers/produtoController");
-const usuarioController = require("../controllers/usuarioController");
+const loginController = require("../controllers/loginController");
+const signinController = require("../controllers/siginController");
+const produtosController = require("../controllers/produtoController");
 const app = express();
-app.get("/prod", prodController.getAll);
-app.post("/prod", prodController.save);
-app.get('/usr', usuarioController.getAll);
-app.post('/usr', usuarioController.save);
-app.get('/', usuarioController.render);
+app.get('/', loginController.render);
+app.post('/', loginController.login);
+app.get('/cadastrar', signinController.render);
+app.post('/cadastrar', signinController.save);
+app.get('/home', produtosController.render);
 module.exports = app;
 //# sourceMappingURL=index.js.map

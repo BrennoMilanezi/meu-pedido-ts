@@ -1,15 +1,18 @@
 import * as express from 'express';
 
 import * as prodController from "../controllers/produtoController";
-import * as usuarioController from "../controllers/usuarioController";
+import * as loginController from '../controllers/loginController';
+import * as signinController from '../controllers/siginController';
+import * as produtosController from '../controllers/produtoController';
+
 const app = express();
 
-app.get("/prod", prodController.getAll);
-app.post("/prod", prodController.save);
+app.get('/', loginController.render)
+app.post('/', loginController.login)
 
-app.get('/usr', usuarioController.getAll)
-app.post('/usr', usuarioController.save)
+app.get('/cadastrar', signinController.render)
+app.post('/cadastrar', signinController.save)
 
-app.get('/', usuarioController.render)
+app.get('/home', produtosController.render)
 
 module.exports = app

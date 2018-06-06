@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
+const produto_1 = require("./produto");
 let combo = class combo {
 };
 __decorate([
@@ -24,6 +25,11 @@ __decorate([
     typeorm_1.Column(),
     __metadata("design:type", Number)
 ], combo.prototype, "preco", void 0);
+__decorate([
+    typeorm_1.ManyToMany(type => produto_1.Produto),
+    typeorm_1.JoinTable(),
+    __metadata("design:type", Array)
+], combo.prototype, "item", void 0);
 combo = __decorate([
     typeorm_1.Entity("combo")
 ], combo);

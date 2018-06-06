@@ -4,7 +4,10 @@
   "description": "Meu pedido com TypeORM",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "coverage": "jest --colors --coverage",
+    "demo": "nodemon demo/demo.js",
+    "lint": "eslint build/**/*.js",
+    "test": "jest"
   },
   "author": "Matheus Barbosa e Brenno Milanezi",
   "license": "ISC",
