@@ -6,6 +6,12 @@ node_js:
 dist: trusty
 sudo: required
 
+addons:
+    sonarqube:
+        organization: "MeuPedido"
+        token:
+            secure: f38656ed88d5a061447dbe17101fcab4503ea1b3
+
 branches:
   only:
   - master
@@ -16,9 +22,8 @@ install:
 
 script:
   - npm test
+  - sonar-scanner
 
-notifications:
-    email:
-        on_success: never
-        on_failure: always
-        
+cache:
+  directories:
+    - node_modules

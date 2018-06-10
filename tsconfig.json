@@ -7,24 +7,11 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "build",
-    "baseUrl": ".",
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "paths": {
-      "*": [
-        "node_modules/*",
-        "src/types/*"
-      ]
-    }
+    "experimentalDecorators": true
   },
-  "jest": {
-    "globals": {
-      "ts-jest": {
-        "tsConfigFile": "tsconfig.json"
-      }
-    }
-  },
-    "include": [
-        "src/**/*"
-    ]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ]
 }
