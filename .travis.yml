@@ -7,7 +7,7 @@ dist: trusty
 sudo: required
 
 addons:
-    sonarqube:
+    sonarcloud:
         organization: "MeuPedido"
         token:
             secure: f38656ed88d5a061447dbe17101fcab4503ea1b3
