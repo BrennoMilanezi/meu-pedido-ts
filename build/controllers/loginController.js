@@ -15,9 +15,19 @@ exports.render = (req, res) => __awaiter(this, void 0, void 0, function* () {
 exports.login = (req, res) => __awaiter(this, void 0, void 0, function* () {
     //RETORNA TODOS OS USUARIOS CADSTRADOS NO BANCO
     let userRepo = new usuarioRepository_1.UsuarioRepo();
+    let login = req.body.login;
+    let senha = req.body.senha;
+    let finded = 0;
     userRepo.getAll().then((result) => {
-        console.log("Result : " + result);
-        res.send(result);
+        result.forEach((usr) => {
+            if (login === usr.email && senha === usr.senha) {
+                finded = 1;
+                res.redirect('/home');
+            }
+        });
+        if (!finded) {
+            res.render('index', { title: 'Meu Pedido', error: 'Login nao realizado' });
+        }
     });
 });
 //# sourceMappingURL=loginController.js.map

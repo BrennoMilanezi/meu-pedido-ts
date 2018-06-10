@@ -1,0 +1,1 @@
+export default (i: number, j: number) => i+j;

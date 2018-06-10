@@ -4,6 +4,9 @@ import * as prodController from "../controllers/produtoController";
 import * as loginController from '../controllers/loginController';
 import * as signinController from '../controllers/siginController';
 import * as produtosController from '../controllers/produtoController';
+import * as feedbackController from '../controllers/feedbackController';
+import * as profileController from '../controllers/profileController';
+import * as paymentController from '../controllers/paymentController';
 
 const app = express();
 
@@ -14,5 +17,11 @@ app.get('/cadastrar', signinController.render)
 app.post('/cadastrar', signinController.save)
 
 app.get('/home', produtosController.render)
+
+app.get('/feedback', feedbackController.render)
+
+app.get('/profile', profileController.render)
+
+app.get('/payment', paymentController.render)
 
 module.exports = app
