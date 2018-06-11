@@ -10,6 +10,7 @@
   "author": "Matheus Barbosa e Brenno Milanezi",
   "license": "ISC",
   "dependencies": {
+    "@types/express-session": "^1.15.10",
     "@types/node": "^10.1.2",
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",

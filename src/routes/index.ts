@@ -24,4 +24,15 @@ app.get('/profile', profileController.render)
 
 app.get('/payment', paymentController.render)
 
+app.get('/foo', function(req, res, next) {
+  var sessData = req.session;
+  res.send(sessData.secret);
+});
+
+
+app.get('/bar', function(req, res, next) {
+  var someAttribute = req.session.someAttribute;
+  res.send(`This will print the attribute I set earlier: ${someAttribute}`);
+});
+
 module.exports = app
