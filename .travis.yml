@@ -22,7 +22,6 @@ install:
   - npm install -g typescript
 
 script:
-  - npm test
   - sonar-scanner
 
 cache:
