@@ -22,6 +22,7 @@ install:
 
 script:
   - npm build 
+  - sonar-scanner
 
 cache:
   directories:
