@@ -1,12 +1,26 @@
 language: node_js
 
-node_js:
-  - "8"
-
 dist: trusty
+
 sudo: required
 
+node_js:
+  - "8"
+jdk:
+  - oraclejdk8
+  
+addons:
+    apt:
+      packages:
+        - oracle-java8-installer 
+    sonarcloud:
+        organization: "brennomilanezi-github"
+        token:
+            secure: f38656ed88d5a061447dbe17101fcab4503ea1b3
 
+before_script:
+  - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+  
 branches:
   only:
   - master
@@ -14,11 +28,15 @@ branches:
 
 install:
   - npm install
-
+  - npm install -g typescript
+  
 script:
-  - npm build
+  - npm build 
   - sonar-scanner
-
+  
+notifications:
+  slack: bsi-ifserra:6akoTA2ECkSegyCvpmPaN0WO
+  
 cache:
   directories:
     - node_modules
