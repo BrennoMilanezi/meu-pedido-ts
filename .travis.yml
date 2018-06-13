@@ -28,8 +28,6 @@ branches:
 
 install:
   - npm install
-  - npm install -g tslint  
-  - npm install --dev tslint-sonarts@1.2.0-0 
   
 script:
   - npm build 
