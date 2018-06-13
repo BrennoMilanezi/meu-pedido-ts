@@ -32,7 +32,8 @@ exports.save = (req, res) => __awaiter(this, void 0, void 0, function* () {
     usr.status = 1;
     usr.cliente = cliente;
     //COMUNICA COM O REPOSITORY PARA SALVAR NO BANCO
-    clienteRepo.saveAny(cliente);
-    userRepo.saveAny(usr);
+    yield clienteRepo.saveAny(cliente);
+    yield userRepo.saveAny(usr);
+    res.redirect('/');
 });
-//# sourceMappingURL=usuarioController.js.map
+//# sourceMappingURL=siginController.js.map
