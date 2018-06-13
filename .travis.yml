@@ -32,7 +32,10 @@ install:
 script:
   - npm build 
   - sonar-scanner
-
+  
+ notifications:
+    slack: bsi-ifserra:6akoTA2ECkSegyCvpmPaN0WO
+    
 cache:
   directories:
     - node_modules
