@@ -28,13 +28,13 @@ branches:
 
 install:
   - npm install
-  
+   
 script:
   - npm build 
   - sonar-scanner
   
- notifications:
-    slack: bsi-ifserra:6akoTA2ECkSegyCvpmPaN0WO
+notifications:
+  slack: bsi-ifserra:6akoTA2ECkSegyCvpmPaN0WO
     
 cache:
   directories:
