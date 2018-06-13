@@ -5,6 +5,12 @@ node_js:
 
 dist: trusty
 sudo: required
+addons:
+    sonarcloud:
+        organization: "brennomilanezi-github"
+        token:
+            secure: f38656ed88d5a061447dbe17101fcab4503ea1b3
+
 
 branches:
   only:
