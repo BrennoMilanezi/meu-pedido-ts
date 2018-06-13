@@ -19,7 +19,6 @@ branches:
 
 install:
   - npm install
-  - npm test
 
 script:
   - sonar-scanner
