@@ -1,17 +1,26 @@
 language: node_js
 
+dist: trusty
+
+sudo: required
+
 node_js:
   - "8"
-
-dist: trusty
-sudo: required
+jdk:
+  - oraclejdk8
+  
 addons:
+    apt:
+      packages:
+        - oracle-java8-installer 
     sonarcloud:
         organization: "brennomilanezi-github"
         token:
             secure: f38656ed88d5a061447dbe17101fcab4503ea1b3
 
-
+before_script:
+  - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+  
 branches:
   only:
   - master
