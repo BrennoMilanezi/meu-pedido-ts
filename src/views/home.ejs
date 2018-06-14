@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Meu Pedido</title>
+    <link rel='stylesheet' href='/stylesheets/style.css?v=1.0' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <%- include('template/head') %>
+  </head>
+  <body class="login">
+      <div class="row">
+      <a href="/profile"><i class="large material-icons" style="cursor: pointer;margin-left: 71%;color: #f7f4f4;">account_circle</i>
+      </a>
+    </div>
+    <hr>
+    <form>
+      <div class="row">
+        <div class="col-s13-m10">
+           
+           <div class="card home-respon">
+            <div class="card-content">
+            </div>
+            <div class="card-tabs">
+                <ul class="tabs tabs-fixed-width">
+                    <li class="tab"><a class="active" href="#comidas">Comidas</a></li>
+                    <li class="tab"><a href="#bebidas">Bebidas</a></li>
+                    <li class="tab"><a href="#favoritos">Favoritos</a></li>
+                    <li class="tab"><a href="#promos">Promoções</a></li>
+                </ul>
+            </div>
+            <div class="card-content grey lighten-4">
+                <div id="comidas"><%- include('menuTabs/comidas') %></div>
+                <div id="bebidas"><%- include('menuTabs/bebidas') %></div>
+                <div id="favoritos"><%- include('menuTabs/favoritos') %></div>
+                <div id="promos"><%- include('menuTabs/promos') %></div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </form>
+    
+  <script type="text/javascript" src="javascripts/total.js"></script>
+  <%- include('template/scripts') %>
+  </body>
+</html>
+<script>
+  function add(i){
+    
+    var qnt = document.getElementById(i).innerHTML
+    
+    var precoI = 'preco' + i
+    var preco = parseFloat(document.getElementById(precoI).innerHTML)
+    
+    var total = parseFloat(document.getElementById('total').innerHTML)
+    
+    
+    if(qnt > 0){
+        qnt -= 1
+        total += preco
+    }
+    document.getElementById(i).innerHTML = qnt
+    document.getElementById('total').innerHTML = total
+    
+}
+</script>
