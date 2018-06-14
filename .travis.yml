@@ -26,8 +26,6 @@ branches:
   - master
   - dev
 
-
-
 install:
   - npm install
   - npm install typescript
