@@ -11,8 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
 const usuario_1 = require("./usuario");
-const cartao_1 = require("./cartao");
-const compra_1 = require("./compra");
 let Cliente = class Cliente {
 };
 __decorate([
@@ -31,15 +29,6 @@ __decorate([
     typeorm_1.OneToOne(type => usuario_1.Usuario, usr => usr.cliente),
     __metadata("design:type", Cliente)
 ], Cliente.prototype, "usr", void 0);
-__decorate([
-    typeorm_1.ManyToMany(type => cartao_1.Cartao),
-    typeorm_1.JoinTable(),
-    __metadata("design:type", Array)
-], Cliente.prototype, "cartoes", void 0);
-__decorate([
-    typeorm_1.OneToMany(type => compra_1.Compra, compra => compra.cliente),
-    __metadata("design:type", Array)
-], Cliente.prototype, "compras", void 0);
 Cliente = __decorate([
     typeorm_1.Entity("cliente")
 ], Cliente);

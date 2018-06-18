@@ -5,8 +5,6 @@ import { Produto } from "../entities/produto";
 export let getAll = async (req: Request, res: Response) => {
     let prodRepo: ProdutoRepo = new ProdutoRepo();
 
-    console.log("Received getAll ==> GET");
-
     prodRepo.getAllProdutos().then((result: any) => {
         console.log("Result : " + result);
         res.send(result);
