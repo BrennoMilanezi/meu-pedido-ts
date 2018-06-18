@@ -28,24 +28,22 @@ branches:
 
 install:
   - npm install
-<<<<<<< HEAD
-  - npm install -g typescript
-  
-=======
   - npm install typescript
-   
->>>>>>> 348bc2d4bb1a525c409f45746a02f5e4d580dd22
+  
+deploy:
+provider: heroku
+  api-key: 
+    secure: $HEROKU_API_KEY
+  app: meu-pedido-ts
+  
+  
 script:
   - npm build 
   - sonar-scanner
   
 notifications:
   slack: bsi-ifserra:6akoTA2ECkSegyCvpmPaN0WO
-<<<<<<< HEAD
-  
-=======
-    
->>>>>>> 348bc2d4bb1a525c409f45746a02f5e4d580dd22
+
 cache:
   directories:
     - node_modules
