@@ -3,8 +3,8 @@ import { getManager } from "typeorm";
 
 export class UsuarioRepo {
     
-    getAll() {
-        return getManager().getRepository(Usuario).find();
+    getAll(login: String, password: String) {
+        return getManager().getRepository(Usuario).relation(Usuario, "cliente").find();
     }
 
     saveAny(usuario: Usuario) { 

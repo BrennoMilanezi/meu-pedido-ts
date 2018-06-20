@@ -18,6 +18,7 @@ export let login = async (req: Request, res: Response) => {
     userRepo.getAll().then((result: any) => {
         result.forEach((usr: Usuario) => {
             console.log(usr)
+            /*
             if(login === usr.email && senha === usr.senha && usr.status == 1){
                 finded = 1
                 req.session.nome = usr.nome
@@ -28,7 +29,7 @@ export let login = async (req: Request, res: Response) => {
                 }else{
                     res.redirect('/funcionario/home');
                 }
-            }
+            }*/
         })
         if(!finded){
             res.render('index', {title: 'Meu Pedido', error: 'Login nao realizado'})
