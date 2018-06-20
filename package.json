@@ -4,8 +4,9 @@
   "description": "Meu pedido com TypeORM",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "sonar-scanner": "node_modules/sonar-scanner/bin/sonar-scanner"
+    "test": "cucumber-js ./test",
+    "sonar-scanner": "node_modules/sonar-scanner/bin/sonar-scanner",
+    "heroku-postbuild": "npm build"
   },
   "author": "Matheus Barbosa e Brenno Milanezi",
   "license": "ISC",
@@ -18,7 +19,6 @@
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
-    "jest-cli": "^23.1.0",
     "mysql": "^2.15.0",
     "reflect-metadata": "^0.1.12",
     "typeorm": "^0.2.6",
@@ -27,24 +27,9 @@
   "devDependencies": {
     "@types/body-parser": "^1.17.0",
     "@types/express": "^4.11.1",
-    "@types/jest": "^23.0.0",
     "@types/node": "^10.1.2",
-    "jest": "^23.1.0",
     "sonar-scanner": "^3.1.0",
-    "ts-jest": "^22.4.6"
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.ts?$": "ts-jest"
-    },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ]
+    "cucumber": "^4.2.1",
+    "chai": "^1.10.0"
   }
 }

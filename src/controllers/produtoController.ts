@@ -3,11 +3,15 @@ import { ProdutoRepo } from "../repositories/produtoRepository";
 import { Produto } from "../entities/produto";
 
 export let render = async (req: Request, res: Response) => {
-    let prodRepo: ProdutoRepo = new ProdutoRepo();
-
-    prodRepo.getAllProdutos().then((result: any) => {
-        res.render('home', {produtos: result})
-    });
+    if(req.session.cpf){
+        let prodRepo: ProdutoRepo = new ProdutoRepo();
+        prodRepo.getAllProdutos().then((result: any) => {
+            res.render('home', {produtos: result})
+        });
+    }
+    else{
+        res.redirect('/')
+    }
 };
 
 export let save = async (req: Request, res: Response) => {

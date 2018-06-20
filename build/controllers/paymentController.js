@@ -9,6 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.render = (req, res) => __awaiter(this, void 0, void 0, function* () {
-    res.render('payment');
+    if (req.session.cpf) {
+        res.render('payment');
+    }
+    else {
+        res.redirect('/');
+    }
 });
 //# sourceMappingURL=paymentController.js.map

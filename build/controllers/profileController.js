@@ -8,7 +8,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const typeorm_1 = require("typeorm");
+const cliente_1 = require("../entities/cliente");
 exports.render = (req, res) => __awaiter(this, void 0, void 0, function* () {
-    res.render('profile');
+    if (req.session.cpf) {
+        let cartoes = yield typeorm_1.getConnection()
+            .createQueryBuilder()
+            .relation(cliente_1.Cliente, "cartoes");
+        console.log(cartoes);
+        res.render('profile');
+    }
+    else {
+        res.redirect('/');
+    }
 });
 //# sourceMappingURL=profileController.js.map

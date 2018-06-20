@@ -35,13 +35,13 @@ __decorate([
     __metadata("design:type", Number)
 ], Compra.prototype, "nota_avaliacao", void 0);
 __decorate([
-    typeorm_1.ManyToOne(type => cliente_1.Cliente, cliente => cliente.compras),
-    __metadata("design:type", cliente_1.Cliente)
-], Compra.prototype, "cliente", void 0);
-__decorate([
     typeorm_1.ManyToOne(type => cartao_1.Cartao, cartao => cartao.compras),
     __metadata("design:type", cartao_1.Cartao)
 ], Compra.prototype, "cartao", void 0);
+__decorate([
+    typeorm_1.ManyToOne(type => cliente_1.Cliente, cliente => cliente.compras),
+    __metadata("design:type", cliente_1.Cliente)
+], Compra.prototype, "cliente", void 0);
 Compra = __decorate([
     typeorm_1.Entity("compra")
 ], Compra);

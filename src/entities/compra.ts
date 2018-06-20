@@ -21,10 +21,10 @@ export class Compra {
 
     @Column()
     nota_avaliacao: number;
-
-    @ManyToOne(type => Cliente, cliente => cliente.compras)
-    cliente: Cliente;
     
     @ManyToOne(type => Cartao, cartao => cartao.compras)
     cartao: Cartao;
+    
+    @ManyToOne(type => Cliente, cliente => cliente.compras)
+    cliente: Cliente;
 }

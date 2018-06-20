@@ -9,11 +9,13 @@
 
         <tbody>
           <tr>
-            <td>Brenno Milanezi</td>
-            <td>13412242134</td>
+            <% cartoes.forEach((cartao) => {%>
+            <td><% cartao.titular %></td>
+            <td><% cartao.numero  %></td>
             <td><i style="cursor: pointer" class="material-icons">close</i></td>
           </tr>
           <tr>
+          <%  }) %>
             <td>Brenno Alcantara</td>
             <td>30983405987</td>
             <td><i style="cursor: pointer" class="material-icons">close</i></td>

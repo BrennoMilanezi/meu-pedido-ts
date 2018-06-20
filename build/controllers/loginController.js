@@ -20,9 +20,18 @@ exports.login = (req, res) => __awaiter(this, void 0, void 0, function* () {
     let finded = 0;
     userRepo.getAll().then((result) => {
         result.forEach((usr) => {
-            if (login === usr.email && senha === usr.senha) {
+            console.log(usr);
+            if (login === usr.email && senha === usr.senha && usr.status == 1) {
                 finded = 1;
-                res.redirect('/home');
+                req.session.nome = usr.nome;
+                req.session.cpf = usr.cpf;
+                //req.session.cliente = usr.clienteClienteId;
+                if (usr.tipo == 1) {
+                    res.redirect('/home');
+                }
+                else {
+                    res.redirect('/funcionario/home');
+                }
             }
         });
         if (!finded) {

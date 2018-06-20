@@ -3,7 +3,7 @@ import * as bodyParser from "body-parser";
 import "reflect-metadata";
 import {createConnection} from "typeorm";
 import * as session from 'express-session';
-import * as cookie from 'cookie-parser'
+import * as cookieParser from 'cookie-parser'
 import * as appConfig from "./common/app-config";
 
 //import {path} from 'path'
@@ -13,13 +13,20 @@ var router = require('./routes/index')
 
 const app = express();
 
+app.set('trust proxy', 1)
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
+
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", router);
-app.use(cookie());
 app.use(session({ secret: 'this-is-a-secret-token', cookie: { maxAge: 60000 }}));
 /**
  * Express configuration.

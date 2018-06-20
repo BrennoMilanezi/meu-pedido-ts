@@ -1,5 +1,10 @@
 import { Request, Response } from "express";
 
 export let render = async (req: Request, res: Response) => {
-    res.render('feedback')
+    if(req.session.cpf){
+        res.render('feedback')
+    }
+    else{
+        res.redirect('/')
+    }
 }
