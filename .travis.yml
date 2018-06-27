@@ -26,13 +26,18 @@ branches:
   - master
   - dev
 
+before_install:
+  - sudo apt-get install -y jq
+  
 install:
   - npm install
   - npm install -g typescript
   
 script:
   - npm build 
-  - sonar-scanner
+  - sonar-scanner > sonar.txt
+  - sh breakingbuildsonar.sh sonar.txt f38656ed88d5a061447dbe17101fcab4503ea1b3 https://sonarcloud.io
+  - rm sonar.txt
   
 notifications:
   slack: bsi-ifserra:6akoTA2ECkSegyCvpmPaN0WO
