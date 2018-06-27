@@ -11,7 +11,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const produtoRepository_1 = require("../repositories/produtoRepository");
 const produto_1 = require("../entities/produto");
 exports.render = (req, res) => __awaiter(this, void 0, void 0, function* () {
-    if (req.session.cpf) {
+    if (1 /*req.session.cpf*/) {
         let prodRepo = new produtoRepository_1.ProdutoRepo();
         prodRepo.getAllProdutos().then((result) => {
             res.render('home', { produtos: result });
@@ -32,5 +32,13 @@ exports.save = (req, res) => __awaiter(this, void 0, void 0, function* () {
         console.log("Result : " + result);
         res.send(result);
     });
+});
+exports.preenche = (req, res) => __awaiter(this, void 0, void 0, function* () {
+    if (1 /*req.session.cpf*/) {
+        res.render('preencheCampoJS');
+    }
+    else {
+        res.redirect('/');
+    }
 });
 //# sourceMappingURL=produtoController.js.map

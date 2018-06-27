@@ -18,23 +18,21 @@ exports.login = (req, res) => __awaiter(this, void 0, void 0, function* () {
     let login = req.body.login;
     let senha = req.body.senha;
     let finded = 0;
-    userRepo.getAll().then((result) => {
-        result.forEach((usr) => {
-            console.log(usr);
-            if (login === usr.email && senha === usr.senha && usr.status == 1) {
-                finded = 1;
-                req.session.nome = usr.nome;
-                req.session.cpf = usr.cpf;
-                //req.session.cliente = usr.clienteClienteId;
-                if (usr.tipo == 1) {
-                    res.redirect('/home');
-                }
-                else {
-                    res.redirect('/funcionario/home');
-                }
+    userRepo.getOne(login, senha).then((result) => {
+        //console.log(result)
+        if (result.length == 1) {
+            req.session.nome = result[0].nome;
+            req.session.cpf = result[0].cpf;
+            req.session.cliente = result[0].cliente.clienteId;
+            req.session.tipo = result[0].tipo;
+            if (req.session.tipo === 1) {
+                res.redirect('/home');
             }
-        });
-        if (!finded) {
+            else {
+                res.redirect('/funcionario/home');
+            }
+        }
+        else {
             res.render('index', { title: 'Meu Pedido', error: 'Login nao realizado' });
         }
     });

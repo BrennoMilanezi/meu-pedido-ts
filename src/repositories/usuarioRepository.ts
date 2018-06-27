@@ -3,8 +3,8 @@ import { getManager } from "typeorm";
 
 export class UsuarioRepo {
     
-    getAll(login: String, password: String) {
-        return getManager().getRepository(Usuario).relation(Usuario, "cliente").find();
+    getOne(login: string, password: string) {
+        return getManager().getRepository(Usuario).find({where : {email: login, senha: password}, relations: ["cliente"]})
     }
 
     saveAny(usuario: Usuario) { 

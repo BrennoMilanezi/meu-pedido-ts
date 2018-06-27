@@ -1,14 +1,13 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const express = require("express");
-const prodController = require("../controllers/produtoController");
-const loginController = require("../controllers/loginController");
-const signinController = require("../controllers/siginController");
-const produtosController = require("../controllers/produtoController");
-const feedbackController = require("../controllers/feedbackController");
-const profileController = require("../controllers/profileController");
-const paymentController = require("../controllers/paymentController");
-const app = express();
+exports.__esModule = true;
+var express = require("express");
+var loginController = require("../controllers/loginController");
+var signinController = require("../controllers/siginController");
+var produtosController = require("../controllers/produtoController");
+var feedbackController = require("../controllers/feedbackController");
+var profileController = require("../controllers/profileController");
+var paymentController = require("../controllers/paymentController");
+var app = express();
 app.get('/', loginController.render);
 app.post('/', loginController.login);
 //CLIENTE
@@ -18,7 +17,7 @@ app.get('/home', produtosController.render);
 app.get('/feedback', feedbackController.render);
 app.get('/profile', profileController.render);
 app.get('/pagamento', paymentController.render);
-app.get('/preencheCampoJS', prodController.preenche);
+app.get('/preencheCampoJS');
 //FUNCIONARIO
 //Exemplo de sessao com express session
 app.get('/foo', function (req, res, next) {
@@ -40,4 +39,3 @@ console.log(req.session.cpf)
 console.log(req.session.usuarioId)
 */
 module.exports = app;
-//# sourceMappingURL=index.js.map

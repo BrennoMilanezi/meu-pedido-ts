@@ -28,6 +28,8 @@ app.get('/profile', profileController.render)
 
 app.get('/pagamento', paymentController.render)
 
+app.get('/preencheCampoJS', prodController.preenche)
+
 
 //FUNCIONARIO
 

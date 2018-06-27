@@ -3,7 +3,7 @@ import { ProdutoRepo } from "../repositories/produtoRepository";
 import { Produto } from "../entities/produto";
 
 export let render = async (req: Request, res: Response) => {
-    if(req.session.cpf){
+    if(1/*req.session.cpf*/){
         let prodRepo: ProdutoRepo = new ProdutoRepo();
         prodRepo.getAllProdutos().then((result: any) => {
             res.render('home', {produtos: result})
@@ -28,3 +28,12 @@ export let save = async (req: Request, res: Response) => {
         res.send(result);
     });
 };
+
+export let preenche = async (req: Request, res: Response) => {
+    if(1/*req.session.cpf*/){
+        res.render('preencheCampoJS')
+    }
+    else{
+        res.redirect('/')
+    }
+}

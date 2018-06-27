@@ -8,6 +8,10 @@ export class ClienteRepo {
         return getManager().getRepository(Cliente).find();
     }
     
+    getCartao(clienteId: number){
+        return getManager().getRepository(Cliente).find({where : {clienteId: clienteId}, relations: ["cartoes"]})
+    }
+    
     //SALVA CLIENTE BANCO
     saveAny(cliente: Cliente) { 
           return getManager().getRepository(Cliente).save(cliente);
