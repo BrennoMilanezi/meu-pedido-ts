@@ -25,8 +25,7 @@ branches:
   only:
   - master
   - dev
-
-
+  
 install:
   - npm install
   - npm install typescript
@@ -34,7 +33,7 @@ install:
 deploy:
 provider: heroku
   api-key: 
-    secure: $HEROKU_API_KEY
+    secure: c4db4f55-65b3-450d-803d-dee8df340a10
   app: meu-pedido-ts
   
   
