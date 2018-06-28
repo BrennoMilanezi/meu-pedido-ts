@@ -28,9 +28,14 @@ app.get('/cadastrar', (req, res) => {
   signinController.render(req, res);
 })
 
+<<<<<<< HEAD
 app.post('/cadastrar', (req, res) => {
   signinController.save(req, res);  
 })
+=======
+app.get('/preencheCampoJS', prodController.preenche)
+
+>>>>>>> 526a142a350f7b6087a9a021c79b79cd7c0ec3f6
 
 app.get('/home', (req, res) => {
   produtosController.render(req, res);

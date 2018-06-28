@@ -10,6 +10,7 @@ export class LoginController {
         res.render('index', {title: 'Meu Pedido', error: null})
     };
     
+<<<<<<< HEAD
     async login(req: Request, res: Response, signinController: SigninController){
         //RETORNA TODOS OS USUARIOS CADSTRADOS NO BANCO
         let userRepo: UsuarioRepo = new UsuarioRepo();
@@ -39,3 +40,26 @@ export class LoginController {
         })
     };
 }
+=======
+    userRepo.getOne(login, senha).then((result) => {
+        //console.log(result)
+        if(result.length == 1){
+            req.session.nome = result[0].nome
+            req.session.cpf = result[0].cpf
+            req.session.cliente = result[0].cliente.clienteId;
+            req.session.tipo = result[0].tipo
+            
+            if(req.session.tipo === 1){
+                res.redirect('/home');
+            }
+            else{
+                res.redirect('/funcionario/home');
+            }
+        }
+        else{
+            res.render('index', {title: 'Meu Pedido', error: 'Login nao realizado'})
+        }
+    })
+    
+};
+>>>>>>> 526a142a350f7b6087a9a021c79b79cd7c0ec3f6

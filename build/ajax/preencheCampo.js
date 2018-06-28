@@ -15,7 +15,8 @@ function preencheCampo(campo, valor, tipo, callback) {
     }*/
 
     // Aqui vão os valores, caso haja mais de um, e o nome do campo que pediu a requisição.
-    var url2 = "/preencheCampoJS/?campo="+campo+"&valor="+valor+"&tipo="+tipo;    
+
+    var url2 = "/preencheCampoJS/?campo="+campo+"&valor="+valor+"&tipo="+tipo;
 
     // Chamada do método open para processar a requisição
     ret.open("Get", url2, true);
