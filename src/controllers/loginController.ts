@@ -1,37 +1,41 @@
 import { Request, Response } from "express";
 import { UsuarioRepo } from "../repositories/usuarioRepository";
 import { ClienteRepo } from "../repositories/clienteRepository";
+import { SigninController } from "./siginController"
 import { Usuario } from "../entities/usuario";
 import { Cliente } from "../entities/cliente";
 
-export let render = async (req: Request, res: Response) => {
-    res.render('index', {title: 'Meu Pedido', error: null})
-}
-
-export let login = async (req: Request, res: Response) => {
-    //RETORNA TODOS OS USUARIOS CADSTRADOS NO BANCO
-    let userRepo: UsuarioRepo = new UsuarioRepo();
-    let login = req.body.login
-    let senha = req.body.senha
-    let finded = 0
+export class LoginController {
+    async render(req: Request, res: Response){
+        res.render('index', {title: 'Meu Pedido', error: null})
+    };
     
-    userRepo.getAll().then((result: any) => {
-        result.forEach((usr: Usuario) => {
-            console.log(usr)
-            if(login === usr.email && senha === usr.senha && usr.status == 1){
-                finded = 1
-                req.session.nome = usr.nome
-                req.session.cpf = usr.cpf
-                //req.session.cliente = usr.clienteClienteId;
-                if(usr.tipo == 1){
+    async login(req: Request, res: Response, signinController: SigninController){
+        //RETORNA TODOS OS USUARIOS CADSTRADOS NO BANCO
+        let userRepo: UsuarioRepo = new UsuarioRepo();
+        let login = req.body.login
+        let senha = req.body.senha
+        let finded = 0
+        
+        userRepo.getOne(login, senha).then((result) => {
+            //console.log(result)
+            if(result.length == 1){
+                req.session.nome = result[0].nome
+                req.session.cpf = result[0].cpf
+                req.session.cliente = result[0].cliente.clienteId;
+                req.session.tipo = result[0].tipo
+                
+                if(req.session.tipo === 1){
+                    signinController.changeDataState();
                     res.redirect('/home');
-                }else{
+                }
+                else{
                     res.redirect('/funcionario/home');
                 }
             }
+            else{
+                res.render('index', {title: 'Meu Pedido', error: 'Login nao realizado'})
+            }
         })
-        if(!finded){
-            res.render('index', {title: 'Meu Pedido', error: 'Login nao realizado'})
-        }
-    });
-};
+    };
+}

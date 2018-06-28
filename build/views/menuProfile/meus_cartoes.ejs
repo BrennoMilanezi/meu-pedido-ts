@@ -10,16 +10,11 @@
         <tbody>
           <tr>
             <% cartoes.forEach((cartao) => {%>
-            <td><% cartao.titular %></td>
-            <td><% cartao.numero  %></td>
+            <td><%= cartao.titular %></td>
+            <td><%= cartao.numero  %></td>
             <td><i style="cursor: pointer" class="material-icons">close</i></td>
           </tr>
-          <tr>
           <%  }) %>
-            <td>Brenno Alcantara</td>
-            <td>30983405987</td>
-            <td><i style="cursor: pointer" class="material-icons">close</i></td>
-          </tr>
         </tbody>
       </table><br><br><br>
       <div class="card-action center-align">

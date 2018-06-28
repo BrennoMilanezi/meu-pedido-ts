@@ -1,57 +1,55 @@
 import * as express from 'express';
-
-import * as prodController from "../controllers/produtoController";
-import * as loginController from '../controllers/loginController';
-import * as signinController from '../controllers/siginController';
-import * as produtosController from '../controllers/produtoController';
-import * as feedbackController from '../controllers/feedbackController';
-import * as profileController from '../controllers/profileController';
-import * as paymentController from '../controllers/paymentController';
+import { Request, Response } from "express";
+import { ProdutoController } from "../controllers/produtoController";
+import { LoginController } from '../controllers/loginController';
+import { SigninController } from '../controllers/siginController';
+import { FeedBackContoller } from '../controllers/feedbackController';
+import { ProfileController }from '../controllers/profileController';
+import { PaymentController } from '../controllers/paymentController';
 
 const app = express();
+let signinController: SigninController = new SigninController();
+let loginController: LoginController = new LoginController();
+let produtosController: ProdutoController = new ProdutoController();
+let feedbackController: FeedBackContoller = new FeedBackContoller();
+let profileController: ProfileController = new ProfileController();
+let paymentController: PaymentController = new PaymentController();
 
-
-
-app.get('/', loginController.render)
-app.post('/', loginController.login)
+app.get('/', (req, res) => {
+  loginController.render(req, res);
+})
+app.post('/', (req, res) => {
+  loginController.login(req, res, signinController);
+})
 
 
 //CLIENTE
-app.get('/cadastrar', signinController.render)
-app.post('/cadastrar', signinController.save)
+app.get('/cadastrar', (req, res) => {
+  signinController.render(req, res);
+})
 
-app.get('/home', produtosController.render)
+app.post('/cadastrar', (req, res) => {
+  signinController.save(req, res);  
+})
 
-app.get('/feedback', feedbackController.render)
+app.get('/home', (req, res) => {
+  produtosController.render(req, res);
+})
 
-app.get('/profile', profileController.render)
+app.get('/feedback', (req, res) => {
+  feedbackController.render(req, res);
+})
 
-app.get('/pagamento', paymentController.render)
+app.get('/profile', (req, res) => {
+  profileController.render(req, res);
+})
 
+app.get('/pagamento', (req, res) => {
+  paymentController.render(req, res);
+})
 
-//FUNCIONARIO
-
-
-//Exemplo de sessao com express session
-app.get('/foo', function(req, res, next) {
-  if(req.session.count){
-    req.session.count ++
-    res.setHeader('Content-Type', 'text/html')
-    res.send('Nao é a primeira vez acessando: ' + req.session.count)
-    res.end()
-  }
-  else{
-    req.session.count = 1
-    res.send('É a primeira vez')
-  }
-});
-
-
-/* Exemplo de captura e exibição dos dados com a sessao
-res.setHeader('Content-Type', 'text/html')
-console.log(req.session.nome)
-console.log(req.session.cpf)
-console.log(req.session.usuarioId)
-*/
+app.get('/preencheCampoJS', (req, res) => {
+  produtosController.preenche(req, res)
+})
 
 module.exports = app

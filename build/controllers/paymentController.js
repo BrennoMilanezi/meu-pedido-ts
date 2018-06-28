@@ -8,12 +8,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.render = (req, res) => __awaiter(this, void 0, void 0, function* () {
-    if (req.session.cpf) {
-        res.render('payment');
+const clienteRepository_1 = require("../repositories/clienteRepository");
+class PaymentController {
+    render(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (req.session.cpf) {
+                let clienteRepo = new clienteRepository_1.ClienteRepo();
+                clienteRepo.getCartao(req.session.cliente).then((result) => {
+                    let cartoes = result[0].cartoes;
+                    res.render('payment', { cartoes: cartoes });
+                });
+            }
+            else {
+                res.redirect('/');
+            }
+        });
     }
-    else {
-        res.redirect('/');
-    }
-});
+}
+exports.PaymentController = PaymentController;
 //# sourceMappingURL=paymentController.js.map

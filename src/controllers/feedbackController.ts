@@ -1,10 +1,12 @@
 import { Request, Response } from "express";
 
-export let render = async (req: Request, res: Response) => {
-    if(req.session.cpf){
-        res.render('feedback')
-    }
-    else{
-        res.redirect('/')
+export class FeedBackContoller {
+    async render(req: Request, res: Response){
+        if(req.session.cpf){
+            res.render('feedback')
+        }
+        else{
+            res.redirect('/')
+        }
     }
 }
