@@ -1,0 +1,22 @@
+<table class="table-perfil striped">
+        <thead>
+          <tr>
+              <th>Nome Titular</th>
+              <th>Cartão</th>
+              <th>Excluir</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <% cartoes.forEach((cartao) => {%>
+            <td><%= cartao.titular %></td>
+            <td><%= cartao.numero  %></td>
+            <td><i style="cursor: pointer" class="material-icons">close</i></td>
+          </tr>
+          <%  }) %>
+        </tbody>
+      </table><br><br><br>
+      <div class="card-action center-align">
+              <button class="waves-effect waves-light btn">Cadastrar Cartão
+            </button></div><br><br><br>

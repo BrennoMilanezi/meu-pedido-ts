@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css?v=1.0' />
+    <%- include('template/head') %>
+    <script type="text/javascript" src="https://www.superestagios.com.br/index/js/jquery.js"></script>
+    <script type="text/javascript" src="https://www.superestagios.com.br/js/jquery.snow.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type='text/javascript'>
+        $(document).ready(function() {
+            $('#cpf').keypress(function() {
+                formatar(this, '###.###.###-##');
+                return bloqueaAlfaNumericos();
+    
+            });
+        });
+    	$(document).ready(function() {
+            $('#data_nascimento').keypress(function() {
+                formatar(this, '##/##/####');
+                return bloqueaAlfaNumericos();
+    
+            });
+        });
+    	$(document).ready(function() {
+            $('#telefone').keypress(function() {
+                formatar(this, '##-#####-####');
+                return bloqueaAlfaNumericos();
+    
+            });
+        });
+        function formatar(src, mask) {
+            var i = src.value.length;
+            var saida = mask.substring(0, 1);
+            var texto = mask.substring(i)
+            if (texto.substring(0, 1) != saida) {
+                src.value += texto.substring(0, 1);
+            }
+        }
+        function bloqueaAlfaNumericos() {
+            var tecla = window.event.keyCode;
+            tecla = String.fromCharCode(tecla);
+            if (((tecla >= '0') && (tecla <= '9')) || window.event.keyCode == 13) {
+                return true;
+    
+            } else {
+                return false;
+    
+            }
+        }
+    </script>
+
+  </head>
+  <body class="login">
+
+    <h3 class="title center-align"><%= title %></h3>
+    <form method="POST" class="col s6">
+      <div class="row">
+        <div class="col s12 m4">
+           
+          <div class="card white center-align center-cadastro ">
+            <div class="card-content black-text">
+              
+             <div class="row">
+                <div class="col s12">
+                    Nome:
+                    <div class="input-field inline">
+                        <input value="<%= user.nome %>" id="nome" name="nome" type="text" class="validate" style="width: 100%;" required>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col s12">
+                    Email:
+                    <div class="input-field inline">
+                        <input value="<%= user.email %>" id="email" name="email" type="text" class="validate " style="width: 100%;" required>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col s12">
+                    Senha:
+                    <div class="input-field inline">
+                        <input value="<%= user.senha %>" id="senha" name="senha" type="password" class="validate" style="width: 100%;" required>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col s12">
+                    Confir. Senha:
+                    <div class="input-field inline">
+                        <input name="conf_senha" id="conf_senha" type="password" class="validate" style="width: 100%;" required>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col s12">
+                    Cpf:
+                    <div class="input-field inline">
+                        <input value="<%= user.cpf %>" id="cpf" name="cpf" type="text" maxlength="14" class="validate" style="width: 100%;" required>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col s12">
+                    Telefone:
+                    <div class="input-field inline">
+                        <% if(user === ""){ %>
+                            <input id="telefone" maxlength="13" name="telefone" type="tel" class="validate" style="width: 100%;" required>
+                        <% }else { %>
+                            <input value="<%= user.cliente.telefone %>" id="telefone" maxlength="13" name="telefone" type="tel" class="validate" style="width: 100%;" required>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col s12">
+                    Dat. Nascimento:
+                    <div class="input-field inline">
+                        <% if(user === ""){ %>
+                            <input id="data_nascimento" maxlength="10" name="data_nascimento" type="text" class="validate" style="width: 100%;" required>
+                        <% }else { %>
+                            <input value="<%= user.cliente.nascimento %>" id="data_nascimento" maxlength="10" name="data_nascimento" type="text" class="validate" style="width: 100%;" required>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+              
+              
+            <div class="card-action center-align">
+              <button class="waves-effect waves-light btn">Confirmar</buton>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+    
+      
+  <%- include('template/scripts') %>
+  </body>
+</html>
