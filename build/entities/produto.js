@@ -21,7 +21,9 @@ __decorate([
     __metadata("design:type", String)
 ], Produto.prototype, "nome", void 0);
 __decorate([
-    typeorm_1.Column(),
+    typeorm_1.Column({
+        type: 'float'
+    }),
     __metadata("design:type", Number)
 ], Produto.prototype, "preco", void 0);
 __decorate([

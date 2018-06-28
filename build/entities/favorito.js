@@ -16,6 +16,14 @@ __decorate([
     typeorm_1.PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
 ], Favorito.prototype, "favoritoId", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", Number)
+], Favorito.prototype, "produtoId", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", Number)
+], Favorito.prototype, "clienteId", void 0);
 Favorito = __decorate([
     typeorm_1.Entity("favorito")
 ], Favorito);

@@ -9,7 +9,9 @@ export class Produto {
     @Column()
     nome: string;
     
-    @Column()
+    @Column({
+        type: 'float'
+    })
     preco: number;
 
     @Column()

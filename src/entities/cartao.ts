@@ -1,7 +1,9 @@
-import {Entity, Column,  PrimaryGeneratedColumn} from "typeorm";
+import {Entity, Column,  PrimaryGeneratedColumn, OneToMany} from "typeorm";
+import {Cliente} from './cliente'
+import {Compra} from './compra'
 
 @Entity("cartao")
-export class cartao {
+export class Cartao {
 
     @PrimaryGeneratedColumn()
     cartaoId: number;
@@ -19,4 +21,7 @@ export class cartao {
        type: "date"
    })
     vencimento: string;
+    
+    @OneToMany(type => Compra, compra => compra.cliente)
+    compras: Compra[]
 }

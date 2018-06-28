@@ -31,9 +31,10 @@
                        <form method="POST">
                             <select name="cartao">
                               <option value="0" multiple>Selecione...</option>
-                              <option value="1">Cartao 1</option>
-                              <option value="2">Cartao 2</option>
-                              <option value="3">Cartao 3</option>
+                              <% cartoes.forEach((cartao) => {%>
+                              <% var i = 1 %>
+                                  <option value="<%=i%>"><%= cartao.titular %></option>
+                              <% i++ }) %>
                             </select>
                             <div class="card-action center-align">
                               <button class="waves-effect waves-light btn">Pagar</button>

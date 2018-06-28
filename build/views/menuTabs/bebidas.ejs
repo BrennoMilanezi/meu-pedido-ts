@@ -14,7 +14,11 @@
                             <div class="card-action">
                                 <b id="<%= i %>"><%= bebida.quantidade %></b> Unds.
                                 <% var precoI = 'preco'+ i %>
+<<<<<<< HEAD
                                 <p>R$ <b id=<%= precoI %>><%= bebida.preco %></b><i style="margin-left: 25%;cursor: pointer;" class="small material-icons" onclick="add(<%= i %>)">add_circle</i></p>
+=======
+                                <p>R$ <b id=<%= precoI %>><%= bebida.preco %></b><i style="margin-left: 25%;cursor: pointer;" class="small material-icons" onclick="preencheCampo('atualiza_campo_item', 1, 'atualiza');">add_circle</i></p>
+>>>>>>> dev
                             </div>
                         </div>
                     </div>
@@ -23,6 +27,14 @@
             <% } %>
             <% i++ }); %>
         </div>
+<<<<<<< HEAD
     </div>
     <%- include('total') %>
 </div>
+=======
+    </div>
+    <div id="atualiza_campo_item">
+        <%- include('total') %>
+    </div>
+</div><!--add(<%= i %>)-->
+>>>>>>> dev

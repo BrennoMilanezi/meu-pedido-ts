@@ -1,0 +1,78 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 526a142a350f7b6087a9a021c79b79cd7c0ec3f6
+<script>
+var url = document.write(document.URL);
+var query = url.split('?');
+var partes = query[1].split('&');
+var data = {};
+var cont = 1;
+var campo = "";
+var valor = "";
+var tipo = "";
+partes.forEach(function (parte) {
+    var chaveValor = parte.split('=');
+    if(cont == 1){
+        campo = chaveValor[1];   
+    }
+    if(cont == 2){
+        valor = chaveValor[1];
+    }
+    if(cont == 3){
+        tipo = chaveValor[1];
+    }
+    cont++;
+});
+
+
+if(campo == "atualiza_campo_item" && tipo == "atualiza"){
+    
+    </script>
+    <div class="col s4 caixa-finalizar" style="background: #b9b5b5d4;">
+        <div class="row">
+            
+            <div class="col-s12">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                          <p>COXINHA</p>
+                    </div>
+                    <div class="card-action">
+                        <p>33 Unds.</p>
+                        <p>R$ 13,00<i style="margin-left: 46%;cursor: pointer;" class="small material-icons">do_not_disturb_on</i></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-s12">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                          <p>Suco</p>
+                    </div>
+                    <div class="card-action">
+                        <p>33 Unds.</p>
+                        <p>R$ 13,00<i style="margin-left: 46%;cursor: pointer;" class="small material-icons">do_not_disturb_on</i></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            
+            <div class="col-s12">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                          <p>Total</p>
+                    </div>
+                    <div class="card-action">
+                        <p>R$ <b id='total'>0</b></p>
+                    </div>
+                    <div class="card-action">
+                        <a class="waves-effect waves-light btn" href="/pagamento">Finalizar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+}
+</script>

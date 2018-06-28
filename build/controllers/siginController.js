@@ -8,6 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+<<<<<<< HEAD
 const usuarioRepository_1 = require("../repositories/usuarioRepository");
 const clienteRepository_1 = require("../repositories/clienteRepository");
 const usuario_1 = require("../entities/usuario");
@@ -36,4 +37,28 @@ exports.save = (req, res) => __awaiter(this, void 0, void 0, function* () {
     yield userRepo.saveAny(usr);
     res.redirect('/');
 });
+=======
+const janDados_1 = require("./signinStates/janDados");
+class SigninController {
+    constructor() {
+        this.janDados = new janDados_1.JanDados();
+    }
+    render(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.janDados.render(req, res);
+        });
+    }
+    save(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.janDados.save(req, res);
+        });
+    }
+    changeDataState() {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.janDados.changeDataState();
+        });
+    }
+}
+exports.SigninController = SigninController;
+>>>>>>> dev
 //# sourceMappingURL=siginController.js.map

@@ -7,6 +7,9 @@ class ClienteRepo {
     getAll() {
         return typeorm_1.getManager().getRepository(cliente_1.Cliente).find();
     }
+    getCartao(clienteId) {
+        return typeorm_1.getManager().getRepository(cliente_1.Cliente).find({ where: { clienteId: clienteId }, relations: ["cartoes"] });
+    }
     //SALVA CLIENTE BANCO
     saveAny(cliente) {
         return typeorm_1.getManager().getRepository(cliente_1.Cliente).save(cliente);

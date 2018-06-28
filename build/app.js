@@ -12,16 +12,25 @@ const express = require("express");
 const bodyParser = require("body-parser");
 require("reflect-metadata");
 const typeorm_1 = require("typeorm");
+const session = require("express-session");
 const appConfig = require("./common/app-config");
 //import {path} from 'path'
 var path = require('path');
 var router = require('./routes/index');
 const app = express();
+app.set('trust proxy', 1);
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+}));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", router);
+app.use(session({ secret: 'this-is-a-secret-token', cookie: { maxAge: 60000 } }));
 /**
  * Express configuration.
  */
