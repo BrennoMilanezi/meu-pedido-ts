@@ -1,41 +1,46 @@
 "use strict";
 exports.__esModule = true;
 var express = require("express");
-var loginController = require("../controllers/loginController");
-var signinController = require("../controllers/siginController");
-var produtosController = require("../controllers/produtoController");
-var feedbackController = require("../controllers/feedbackController");
-var profileController = require("../controllers/profileController");
-var paymentController = require("../controllers/paymentController");
+var produtoController_1 = require("../controllers/produtoController");
+var loginController_1 = require("../controllers/loginController");
+var siginController_1 = require("../controllers/siginController");
+var feedbackController_1 = require("../controllers/feedbackController");
+var profileController_1 = require("../controllers/profileController");
+var paymentController_1 = require("../controllers/paymentController");
 var app = express();
-app.get('/', loginController.render);
-app.post('/', loginController.login);
-//CLIENTE
-app.get('/cadastrar', signinController.render);
-app.post('/cadastrar', signinController.save);
-app.get('/home', produtosController.render);
-app.get('/feedback', feedbackController.render);
-app.get('/profile', profileController.render);
-app.get('/pagamento', paymentController.render);
-app.get('/preencheCampoJS');
-//FUNCIONARIO
-//Exemplo de sessao com express session
-app.get('/foo', function (req, res, next) {
-    if (req.session.count) {
-        req.session.count++;
-        res.setHeader('Content-Type', 'text/html');
-        res.send('Nao é a primeira vez acessando: ' + req.session.count);
-        res.end();
-    }
-    else {
-        req.session.count = 1;
-        res.send('É a primeira vez');
-    }
+var signinController = new siginController_1.SigninController();
+var loginController = new loginController_1.LoginController();
+var produtosController = new produtoController_1.ProdutoController();
+var feedbackController = new feedbackController_1.FeedBackContoller();
+var profileController = new profileController_1.ProfileController();
+var paymentController = new paymentController_1.PaymentController();
+app.get('/', function (req, res) {
+    loginController.render(req, res);
 });
-/* Exemplo de captura e exibição dos dados com a sessao
-res.setHeader('Content-Type', 'text/html')
-console.log(req.session.nome)
-console.log(req.session.cpf)
-console.log(req.session.usuarioId)
-*/
+app.post('/', function (req, res) {
+    loginController.login(req, res, signinController);
+});
+//CLIENTE
+app.get('/cadastrar', function (req, res) {
+    signinController.render(req, res);
+});
+app.get('/preencheCampoJS', prodController.preenche);
+app.post('/cadastrar', function (req, res) {
+    signinController.save(req, res);
+});
+app.get('/home', function (req, res) {
+    produtosController.render(req, res);
+});
+app.get('/feedback', function (req, res) {
+    feedbackController.render(req, res);
+});
+app.get('/profile', function (req, res) {
+    profileController.render(req, res);
+});
+app.get('/pagamento', function (req, res) {
+    paymentController.render(req, res);
+});
+app.get('/preencheCampoJS', function (req, res) {
+    produtosController.preenche(req, res);
+});
 module.exports = app;

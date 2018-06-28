@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { ProdutoRepo } from "../repositories/produtoRepository";
 import { Produto } from "../entities/produto";
 
-<<<<<<< HEAD
 export let getAll = async (req: Request, res: Response) => {
     let prodRepo: ProdutoRepo = new ProdutoRepo();
 
@@ -12,8 +11,6 @@ export let getAll = async (req: Request, res: Response) => {
     });
 
 
-=======
-<<<<<<< HEAD
 export class ProdutoController {
     async render(req: Request, res: Response){
         if(req.session.cpf){
@@ -28,10 +25,6 @@ export class ProdutoController {
     };
     
     async save(req: Request, res: Response){
-=======
-export let render = async (req: Request, res: Response) => {
-    if(1/*req.session.cpf*/){
->>>>>>> 526a142a350f7b6087a9a021c79b79cd7c0ec3f6
         let prodRepo: ProdutoRepo = new ProdutoRepo();
     
         let prod:Produto = new Produto();
@@ -54,13 +47,9 @@ export let render = async (req: Request, res: Response) => {
             res.redirect('/')
         }
     }
-<<<<<<< HEAD
-}
-=======
     else{
         res.redirect('/')
     }
->>>>>>> dev
 };
 
 export let save = async (req: Request, res: Response) => {
@@ -86,4 +75,3 @@ export let preenche = async (req: Request, res: Response) => {
         res.redirect('/')
     }
 }
->>>>>>> 526a142a350f7b6087a9a021c79b79cd7c0ec3f6
