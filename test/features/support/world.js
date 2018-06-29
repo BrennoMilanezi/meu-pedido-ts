@@ -1,16 +1,17 @@
-/**
- * @function
- *
- * world is a constructor function
- * with utility properties,
- * destined to be used in step definitions
- */
-var cwd = process.cwd();
-var path = require('path');
+const { setWorldConstructor } = require('cucumber')
 
-var Calculator = require(path.join(cwd, 'calculator'));
+class CustomWorld {
+  constructor() {
+    this.variable = 0
+  }
 
-module.exports = function() {
-    this.calculator = new Calculator();
-    this.expect = require('chai').expect;
+  setTo(number) {
+    this.variable = number
+  }
+
+  incrementBy(number) {
+    this.variable += number
+  }
 }
+
+setWorldConstructor(CustomWorld)
