@@ -1,28 +1,32 @@
-Feature: Cliente se cadastra pelo aplicativo
+Feature: Cadastro do Cliente
   
-  Afim de cadastrar um cliente
-  como um desenvolvedor
-  gostaria de validar seu cadastro
-
-  Scenario: Cliente cadastrou informaçao invalida
-    Given  Cliente digitou informacao invalida
-    When Cliente confirmar
-    Then O cadastro não deve ser completado 
+  Scenario Outline: Cliente cadastrou informaçao invalida
+    Given  Cliente na tela de cadastro e informou os dados de cadastro
+    When Cliente finaliza cadastro
+    Then O cadastro deve ser bloqueado
+    
+  Examples:
+      | nome     | email                      | CPF           | telefone  | Nascimento |
+      | "Brenno" | "milanezibrenno@gmail.com" | '11977'       |'997800078'| 21/01/1997 |
+      | "Thalles"| "thallesvargas"            | '11239099032' |'997933787'| 22/01/1997 | 
 
   Scenario Outline: Cliente cadastrou informacao valida
-    Given Cliente digitou informacao valida 
-    When Cliente confirmar 
+    Given Cliente na tela de cadastro e informou os dados de cadastro
+    When Cliente finaliza cadastro 
     Then O cadastro deve ser completado
+  
+  Examples:
+      | nome     | email                      | CPF           | telefone  | Nascimento |
+      | "Brenno" | "milanezibrenno@gmail.com" | '11976550777' |'997800078'| 21/01/1997 |
+      | "Thalles"| "thallesvargas@gmail.com"  | '11239099032' |'997933787'| 22/01/1997 | 
+
     
   Scenario Outline: Cliente nao cadastrou todas as informacoes
-    Given Cliente preenche todos os campos necessarios
-    When Cliente confirmar 
-    Then O cadastro nao deve ser completado
-
-
-    Examples:
-      | var | increment | result |
-      | 100 |         5 |    105 |
-      |  99 |      1234 |   1333 |
-      |  12 |         5 |     17 |
-      | 
+    Given Cliente na tela de cadastro e informou alguns dados de cadastro
+    When Cliente finaliza cadastro
+    Then O cadastro deve ser bloqueado
+  
+  Examples:
+      | nome     | email                      | CPF           | telefone  | Nascimento |
+      | "Brenno" | "milanezibrenno@gmail.com" | '11976550777' |           | 21/01/1997 |
+      |          | "thallesvargas@gmail.com"  | '11239099032' |'997933787'| 22/01/1997 | 
