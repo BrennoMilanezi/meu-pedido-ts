@@ -28,7 +28,9 @@ app.get('/cadastrar', (req, res) => {
   signinController.render(req, res);
 })
 
-app.get('/preencheCampoJS', prodController.preenche)
+app.get('/preencheCampoJS', (req, res) => {
+  produtosController.preenche(req, res)
+})
 
 app.post('/cadastrar', (req, res) => {
   signinController.save(req, res);  
