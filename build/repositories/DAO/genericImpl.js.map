@@ -1,0 +1,1 @@
+{"version":3,"file":"genericImpl.js","sourceRoot":"","sources":["../../../src/repositories/DAO/genericImpl.ts"],"names":[],"mappings":";;AAEA,qCAAqC;AAErC;IACI,OAAO,CAAC,GAAM;QACV,oBAAU,EAAE,CAAC,aAAa,CAAC,CAAC,CAAC,CAAC,IAAI,CAAC,GAAG,CAAC,CAAC;IAC5C,CAAC;IAED,MAAM;QACF,OAAO,oBAAU,EAAE,CAAC,aAAa,CAAC,CAAC,CAAC,CAAC,IAAI,EAAE,CAAC;IAChD,CAAC;CACJ;AARD,kCAQC"}

@@ -10,6 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const usuarioRepository_1 = require("../repositories/usuarioRepository");
 class LoginController {
+    constructor() {
+        this.userRepo = new usuarioRepository_1.UsuarioRepo();
+    }
     render(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             res.render('index', { title: 'Meu Pedido', error: null });
@@ -19,11 +22,10 @@ class LoginController {
     login(req, res, signinController) {
         return __awaiter(this, void 0, void 0, function* () {
             //RETORNA TODOS OS USUARIOS CADSTRADOS NO BANCO
-            let userRepo = new usuarioRepository_1.UsuarioRepo();
             let login = req.body.login;
             let senha = req.body.senha;
             let finded = 0;
-            userRepo.getOne(login, senha).then((result) => {
+            this.userRepo.getOne(login, senha).then((result) => {
                 //console.log(result)
                 if (result.length == 1) {
                     req.session.nome = result[0].nome;

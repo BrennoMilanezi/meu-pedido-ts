@@ -1,19 +1,23 @@
 import { Usuario } from "../entities/usuario";
 import { getManager } from "typeorm";
+import { UsuarioDAO } from "./DAO/userDAO"
 
-export class UsuarioRepo {
+export class UsuarioRepo implements UsuarioDAO<Usuario>{
     
-    getOne(login: string, password: string) {
+    getAll(): Promise<Usuario[]>{
+        return getManager().getRepository(Usuario).find();
+    }
+    
+    getOne(login: string, password: string): Promise<Usuario[]> {
         return getManager().getRepository(Usuario).find({where : {email: login, senha: password}, relations: ["cliente"]})
     }
     
-    getByCpf(cpf: string){
+    getByCpf(cpf: string): Promise<Usuario[]>{
         return getManager().getRepository(Usuario).find({where: {cpf: cpf}, relations: ["cliente"]})
 
     }
-
     
     saveAny(usuario: Usuario) { 
-          return getManager().getRepository(Usuario).save(usuario);
+          getManager().getRepository(Usuario).save(usuario);
     }
 }

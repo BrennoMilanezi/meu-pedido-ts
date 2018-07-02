@@ -4,20 +4,25 @@ import { ClienteRepo } from "../repositories/clienteRepository";
 import { SigninController } from "./siginController"
 import { Usuario } from "../entities/usuario";
 import { Cliente } from "../entities/cliente";
+import { UsuarioDAO } from "../repositories/DAO/userDAO";
 
 export class LoginController {
+    private userRepo: UsuarioDAO<Usuario>;
+    
+    constructor(){
+        this.userRepo = new UsuarioRepo();
+    }
     async render(req: Request, res: Response){
         res.render('index', {title: 'Meu Pedido', error: null})
     };
     
     async login(req: Request, res: Response, signinController: SigninController){
         //RETORNA TODOS OS USUARIOS CADSTRADOS NO BANCO
-        let userRepo: UsuarioRepo = new UsuarioRepo();
         let login = req.body.login
         let senha = req.body.senha
         let finded = 0
         
-        userRepo.getOne(login, senha).then((result) => {
+        this.userRepo.getOne(login, senha).then((result) => {
             //console.log(result)
             if(result.length == 1){
                 req.session.nome = result[0].nome

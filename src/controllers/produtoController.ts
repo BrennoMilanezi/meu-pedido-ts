@@ -1,12 +1,22 @@
 import { Request, Response } from "express";
 import { ProdutoRepo } from "../repositories/produtoRepository";
+import { ProdutoDAO } from "../repositories/DAO/produtoDAO";
 import { Produto } from "../entities/produto";
 
 export class ProdutoController {
+    
+    private prodRepo: ProdutoDAO<Produto>;
+    private prod: Produto;
+    
+    constructor(){
+        
+        this.prodRepo = new ProdutoRepo();
+        this.prod = new Produto();
+            
+    }
     async render(req: Request, res: Response){
         if(req.session.cpf){
-            let prodRepo: ProdutoRepo = new ProdutoRepo();
-            prodRepo.getAllProdutos().then((result: any) => {
+            this.prodRepo.getAll().then((result: any) => {
                 res.render('home', {produtos: result})
             });
         }
@@ -16,18 +26,12 @@ export class ProdutoController {
     };
     
     async save(req: Request, res: Response){
-        let prodRepo: ProdutoRepo = new ProdutoRepo();
+        this.prod.nome = req.body.nome;
+        this.prod.preco = req.body.preco;
+        this.prod.quantidade = req.body.quantidade;
+        this.prod.tipo = req.body.tipo;
     
-        let prod:Produto = new Produto();
-        prod.nome = req.body.nome;
-        prod.preco = req.body.preco;
-        prod.quantidade = req.body.quantidade;
-        prod.tipo = req.body.tipo;
-    
-        prodRepo.saveProduto(prod).then((result: any) => {
-            console.log("Result : " + result);
-            res.send(result);
-        });
+        this.prodRepo.saveAny(this.prod)
     };
     
     async preenche(req: Request, res: Response){

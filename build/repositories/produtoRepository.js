@@ -3,11 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const produto_1 = require("../entities/produto");
 const typeorm_1 = require("typeorm");
 class ProdutoRepo {
-    getAllProdutos() {
-        return typeorm_1.getManager().getRepository(produto_1.Produto).find();
+    saveAny(obj) {
+        typeorm_1.getManager().getRepository(produto_1.Produto).save(obj);
     }
-    saveProduto(produto) {
-        return typeorm_1.getManager().getRepository(produto_1.Produto).save(produto);
+    getAll() {
+        return typeorm_1.getManager().getRepository(produto_1.Produto).find();
     }
 }
 exports.ProdutoRepo = ProdutoRepo;

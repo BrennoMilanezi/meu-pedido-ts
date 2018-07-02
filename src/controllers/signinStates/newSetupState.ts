@@ -4,6 +4,8 @@ import { JanDados } from './janDados';
 
 import { UsuarioRepo } from "../../repositories/usuarioRepository";
 import { ClienteRepo } from "../../repositories/clienteRepository";
+import { ClienteDAO } from "../../repositories/DAO/clienteDAO";
+import { UsuarioDAO } from "../../repositories/DAO/userDAO";
 import { Usuario } from "../../entities/usuario";
 import { Cliente } from "../../entities/cliente";
 
@@ -11,8 +13,8 @@ export class NewState implements JanStates{
 
     private jan: JanDados;
     private nextState: JanStates;
-    private userRepo: UsuarioRepo;
-    private clienteRepo: ClienteRepo;
+    private userRepo: UsuarioDAO<Usuario>;
+    private clienteRepo: ClienteDAO<Cliente>;
     
     constructor(jan: JanDados){
         this.jan = jan;

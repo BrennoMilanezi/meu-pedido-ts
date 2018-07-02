@@ -33,6 +33,9 @@ app.post('/cadastrar', (req, res) => {
 app.get('/home', (req, res) => {
     produtosController.render(req, res);
 });
+app.post('/cad', (req, res) => {
+    produtosController.save(req, res);
+});
 app.get('/feedback', (req, res) => {
     feedbackController.render(req, res);
 });

@@ -11,11 +11,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const produtoRepository_1 = require("../repositories/produtoRepository");
 const produto_1 = require("../entities/produto");
 class ProdutoController {
+    constructor() {
+        this.prodRepo = new produtoRepository_1.ProdutoRepo();
+        this.prod = new produto_1.Produto();
+    }
     render(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             if (req.session.cpf) {
-                let prodRepo = new produtoRepository_1.ProdutoRepo();
-                prodRepo.getAllProdutos().then((result) => {
+                this.prodRepo.getAll().then((result) => {
                     res.render('home', { produtos: result });
                 });
             }
@@ -27,16 +30,11 @@ class ProdutoController {
     ;
     save(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let prodRepo = new produtoRepository_1.ProdutoRepo();
-            let prod = new produto_1.Produto();
-            prod.nome = req.body.nome;
-            prod.preco = req.body.preco;
-            prod.quantidade = req.body.quantidade;
-            prod.tipo = req.body.tipo;
-            prodRepo.saveProduto(prod).then((result) => {
-                console.log("Result : " + result);
-                res.send(result);
-            });
+            this.prod.nome = req.body.nome;
+            this.prod.preco = req.body.preco;
+            this.prod.quantidade = req.body.quantidade;
+            this.prod.tipo = req.body.tipo;
+            this.prodRepo.saveAny(this.prod);
         });
     }
     ;

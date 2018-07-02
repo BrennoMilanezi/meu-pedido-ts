@@ -50,7 +50,7 @@ class EditState {
                 //COMUNICA COM O REPOSITORY PARA SALVAR NO BANCO
                 this.clienteRepo.saveAny(cliente);
                 this.userRepo.saveAny(usr[0]);
-                res.redirect('/cadastrar');
+                res.redirect('/home');
             });
         });
     }

@@ -10,11 +10,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const clienteRepository_1 = require("../repositories/clienteRepository");
 class ProfileController {
+    constructor() {
+        this.clienteRepo = new clienteRepository_1.ClienteRepo();
+    }
     render(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             if (req.session.cpf) {
-                let clienteRepo = new clienteRepository_1.ClienteRepo();
-                clienteRepo.getCartao(req.session.cliente).then((result) => {
+                this.clienteRepo.getCartao(req.session.cliente).then((result) => {
                     let cartoes = result[0].cartoes;
                     res.render('profile', { cartoes: cartoes });
                 });
