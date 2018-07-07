@@ -29,13 +29,7 @@ branches:
 install:
   - npm install
   - npm install typescript
-  
-deploy:
-provider: heroku
-  api-key: 
-    secure: c4db4f55-65b3-450d-803d-dee8df340a10
-  app: meu-pedido-ts
-    
+
 notifications:
   slack: bsi-ifserra:6akoTA2ECkSegyCvpmPaN0WO
 
