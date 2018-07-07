@@ -42,9 +42,7 @@ install:
    
 script:
   - npm build 
-  - sonar-scanner /*> sonar.txt
-  - sh breakingbuildsonar.sh sonar.txt f38656ed88d5a061447dbe17101fcab4503ea1b3 https://sonarcloud.io
-  - rm sonar.txt*/
+  - sonar-scanner
     
 notifications:
   slack: bsi-ifserra:6akoTA2ECkSegyCvpmPaN0WO
