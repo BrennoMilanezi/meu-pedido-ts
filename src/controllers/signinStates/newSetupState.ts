@@ -52,8 +52,8 @@ export class NewState implements JanStates{
         usr.status = 1;
         usr.cliente = cliente;
         //COMUNICA COM O REPOSITORY PARA SALVAR NO BANCO
-        //await this.clienteRepo.saveAny(cliente);
-        //await this.userRepo.saveAny(usr);
+        await this.clienteRepo.saveAny(cliente);
+        await this.userRepo.saveAny(usr);
         res.redirect('/');
     }
 }
