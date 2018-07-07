@@ -45,11 +45,6 @@ script:
   - sonar-scanner > sonar.txt
   - sh breakingbuildsonar.sh sonar.txt f38656ed88d5a061447dbe17101fcab4503ea1b3 https://sonarcloud.io
   - rm sonar.txt
-  
-deploy:
-  provider: heroku
-  api_key:
-    secure: c4db4f55-65b3-450d-803d-dee8df340a10
     
 notifications:
   slack: bsi-ifserra:6akoTA2ECkSegyCvpmPaN0WO
