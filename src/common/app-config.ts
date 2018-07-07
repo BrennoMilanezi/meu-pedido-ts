@@ -6,7 +6,7 @@ import {ConnectionOptions} from "typeorm";
     host: "den1.mysql6.gear.host",
     port: 3306,
     username: "meupedidots",
-    password: "Qq6Ut9r13!-D",
+    password: "",
     database: "meupedidots",
     entities: [
          "./entities/*.js"
